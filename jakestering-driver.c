@@ -3,6 +3,7 @@
 #include <linux/module.h>
 #include <linux/proc_fs.h>
 #include <linux/slab.h>
+#include <linux/delay.h>
 #include <asm/io.h>
 
 #define JAKESTERING_MAX_USER_SIZE 1024
@@ -53,21 +54,41 @@ static void gpio_set_pinMode( unsigned int pin, unsigned int mode )
 
 static void gpio_pud_control( unsigned int pin, unsigned int value )
 {
-  unsigned int* gpio_pud_register = ( unsigned int* )( ( char* )gpio_registers + 0x94 ); //hardcoded offset to GPPUD
+  unsigned int* gpio_pud_register     = ( unsigned int* )( ( char* )gpio_registers + 0x94 ); //hardcoded offset to GPPUD
+  unsigned int* gpio_pudclk0_register = ( unsigned int* )( ( char* )gpio_registers + 0x98 ); //hardcoded offset to GPPUD
 
   if ( value == 0 )
   {
-    *gpio_pud_register &= ~( 0b1 << pin ); //disable pud
+    *gpio_pud_register = value & 0b11; //disable pud
+    udelay( 5 ); //wait 150 cycles
+    *gpio_pudclk0_register = (0b1 << pin); //set the pin to be pud controlled
+    udelay( 5 ); //wait 150 cycles
+    
+    *gpio_pud_register = 0; //remove control signal
+    *gpio_pudclk0_register = 0; //remove the clock
+
   }
 
   else if ( value == 1 )
   {
-    *gpio_pud_register |= ( 0b01 << pin ); //enable pull down
+    *gpio_pud_register = value & 0b11; //enable pull down
+    udelay( 5 ); //wait 150 cycles
+    *gpio_pudclk0_register = (0b1 << pin); //set the pin to be pud controlled
+    udelay( 5 ); //wait 150 cycles
+    
+    *gpio_pud_register = 0; //remove control signal
+    *gpio_pudclk0_register = 0; //remove the clock
   }
 
   else if ( value == 2 )
   {
-    *gpio_pud_register |= ( 0b10 << pin ); //enable pull up
+    *gpio_pud_register = value & 0b11; //enable pull up
+    udelay( 5 ); //wait 150 cycles
+    *gpio_pudclk0_register |= (0b1 << pin); //set the pin to be pud controlled
+    udelay( 5 ); //wait 150 cycles
+    
+    *gpio_pud_register = 0; //remove control signal
+    *gpio_pudclk0_register = 0; //remove the clock
   }
 }
 
