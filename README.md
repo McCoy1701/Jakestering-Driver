@@ -8,7 +8,7 @@ DEPENDENCIES
 
     sudo apt-get install raspberrypi-kernel-headers
 
-    to check if the kernel headers have properly install:
+    to check if the kernel headers have been properly install:
 
     ls /lib/modules/$(uname -r)/build <- if this file exsist you are good to go to build jakestering_driver.ko
 
@@ -19,7 +19,7 @@ TO BUILD
 
     run the make command
 
-    ls and you should see a whole bunch of files but the one you need is jakestering-driver.ko
+    ls and you should see a whole bunch of files but the only one you need is jakestering-driver.ko
 
 
 
@@ -47,7 +47,7 @@ TO SEE IF IT ALL WORKED:
 
     lsmod | grep jake in the terminal
 
-    you can also check for the /proc/ file with ls /proc/ if you see jakestering-driver then it's install
+    you can also check the /proc/ directory with ls /proc/ if you see jakestering_driver then it's installed
 
 
 
@@ -72,7 +72,7 @@ COMING SOON COMPANION LIBRARY "JAKESTERING" COMING SOON
 *for c only fuck anything else, but you can make it if you want too...*
 
 
-THIS ONLY WORKS FOR THE RASPBERRY PI ZERO v1.3!!! It could work for other boards if they have the bcm2835
+THIS ONLY WORKS FOR THE RASPBERRY PI ZERO v1.3!!! It could work for other boards if they have the bcm2835.
 
 Email if you have any questions. Please make the subject jakestering_driver or jakestering.
 
