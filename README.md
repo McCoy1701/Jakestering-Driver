@@ -25,7 +25,7 @@ TO BUILD
 
 IF YOU WANT THE DRIVER TO PRESIST THEN DO THIS:
 
-    sudo mkdir /lib/modules/6.1.21+/kernel/drivers/jakestering-driver
+    sudo mkdir /lib/modules/$(uname -r)/kernel/drivers/jakestering-driver
 
     sudo cp jakestering-driver.ko /lib/modules/6.1.21+/kernel/drivers/jakestering-driver/
 
