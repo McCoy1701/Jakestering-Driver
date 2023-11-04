@@ -35,6 +35,8 @@ IF YOU WANT THE DRIVER TO PRESIST THEN DO THIS:
 
     add the line jakestering-driver
 
+    sudo depmod
+    
     Now reboot
 
 IF YOU DO NOT WANT THE DRIVER TO PRESIST THEN DO THIS:
