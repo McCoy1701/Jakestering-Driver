@@ -1,5 +1,5 @@
 # Jakestering-Driver
-Jakstering is an extremely simple gpio driver for the bcm2835 SoC on the raspberry pi zero v1.3 
+Jakestering is an extremely simple gpio driver for the bcm2835 SoC on the raspberry pi zero v1.3 
 
 
 DEPENDENCIES
