@@ -69,7 +69,7 @@ TO USE THE DRIVER YOU CAN:
 
 COMING SOON COMPANION LIBRARY "JAKESTERING" COMING SOON
 
-*for c only fuck anything else, but you can make it if you want too...*
+*for c only fuck anything else, but you can make it if you want to...*
 
 
 THIS ONLY WORKS FOR THE RASPBERRY PI ZERO v1.3!!! It could work for other boards if they have the bcm2835.
